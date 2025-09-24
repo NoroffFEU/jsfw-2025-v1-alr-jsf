@@ -13,7 +13,7 @@ const latestProducts = computed(() => products.value.slice(0, 4));
     <h2 class="font-poppins text-2xl text-center font-medium mb-4">NEWS</h2>
     <p v-if="loading">Loading products...</p>
     <p v-else-if="error" class="text-red-500">{{ error }}</p>
-    <div v-else class="grid gap-6 sm:grid-cols-2 md:grid-cols-4">
+    <div v-else class="grid gap-2 grid-cols-2 md:grid-cols-4">
       <ProductCard
         v-for="product in latestProducts"
         :key="product.id"

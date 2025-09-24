@@ -14,7 +14,7 @@ const { products, loading, error } = useProducts();
     <p v-if="loading">Loading products...</p>
     <p v-else-if="error" class="text-red-500">{{ error }}</p>
 
-    <div v-else class="grid gap-6 sm:grid-cols-2 md:grid-cols-4">
+    <div v-else class="grid gap-2 grid-cols-2 md:grid-cols-4">
       <ProductCard
         v-for="product in products"
         :key="product.id"

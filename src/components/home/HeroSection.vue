@@ -1,3 +1,12 @@
+<script setup>
+import { defineProps } from "vue";
+
+const props = defineProps({
+  title: { type: String, required: true },
+  imageUrl: { type: String, required: true },
+});
+</script>
+
 <template>
   <section class="relative w-full h-[500px] md:h-[600px]">
     <img :src="imageUrl" :alt="title" class="w-full h-full object-cover z-0" />
@@ -13,12 +22,3 @@
     </div>
   </section>
 </template>
-
-<script setup>
-import { defineProps } from "vue";
-
-const props = defineProps({
-  title: { type: String, required: true },
-  imageUrl: { type: String, required: true },
-});
-</script>

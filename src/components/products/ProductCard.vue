@@ -1,40 +1,70 @@
+<script setup>
+import { computed } from "vue";
+import { StarIcon as StarSolid } from "@heroicons/vue/24/solid";
+import { StarIcon as StarOutline } from "@heroicons/vue/24/outline";
+
+const props = defineProps({ product: Object });
+
+const discountPercent = computed(() => {
+  if (!props.product) return 0;
+  const { price, discountedPrice } = props.product;
+  if (!price || !discountedPrice || discountedPrice >= price) return 0;
+  return Math.round(((price - discountedPrice) / price) * 100);
+});
+</script>
+
 <template>
-  <div class="overflow-hidden">
-    <div class="relative w-full pb-[155%] overflow-hidden">
-      <img
-        :src="product.image.url"
-        :alt="product.title"
-        class="absolute top-0 left-0 w-full h-full object-cover"
-      />
-    </div>
-    <h3 class="mt-2 font-medium">{{ product.title }}</h3>
-    <div class="mt-1">
-      <span
-        v-if="product.discountPercentage"
-        class="line-through text-gray-500 mr-2"
-      >
-        {{ product.price }} NOK
-      </span>
-      <span class="font-bold">{{ discountedPrice }} NOK</span>
-    </div>
+  <div class="overflow-hidden mb-2">
     <router-link
       :to="`/product/${product.id}`"
-      class="block mt-2 text-primary-600 hover:underline"
+      class="block mt-2 text-base-600"
     >
-      View Details
+      <div class="relative w-full pb-[155%] overflow-hidden">
+        <div
+          v-if="discountPercent > 0"
+          class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-md"
+        >
+          -{{ discountPercent }}%
+        </div>
+        <img
+          :src="product.image.url"
+          :alt="product.image.alt"
+          class="absolute top-0 left-0 w-full h-full object-cover"
+        />
+      </div>
+      <div class="mt-1 text-sm md:text-md flex justify-between">
+        <div>
+          <template v-if="product.discountedPrice < product.price">
+            <span class="line-through text-base mr-2 font-medium">
+              {{ product.price }} NOK
+            </span>
+            <span class="font-bold text-success">
+              {{ product.discountedPrice }} NOK
+            </span>
+          </template>
+          <template v-else>
+            <span class="font-bold">{{ product.price }} NOK</span>
+          </template>
+        </div>
+        <div class="flex items-center">
+          <StarSolid
+            v-for="n in Math.floor(product.rating)"
+            :key="'full-' + n"
+            class="w-3 h-3 text-primary-500"
+          />
+          <StarOutline
+            v-for="n in 5 - Math.floor(product.rating)"
+            :key="'empty-' + n"
+            class="w-3 h-3 text-gray-300"
+          />
+        </div>
+      </div>
+      <h3 class="mt-1 text-sm font-medium text-secondary">
+        {{ product.title }}
+      </h3>
+      <h4 class="mt-1 text-xs text-gray-500">
+        {{ product.tags.join(", ") }}
+      </h4>
     </router-link>
   </div>
 </template>
-
-<script setup>
-import { computed } from "vue";
-const props = defineProps({ product: Object });
-
-const discountedPrice = computed(() => {
-  if (!props.product) return 0;
-  const discount = props.product.discountPercentage || 0;
-  return discount
-    ? Math.round(props.product.price * (1 - discount / 100))
-    : props.product.price;
-});
-</script>

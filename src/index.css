@@ -8,13 +8,19 @@
 
   /* Primary colors */
   --color-primary: #cb997e;
-  --color-text: #0a0a0a;
+  --color-base: #0a0a0a;
+  --color-secondary: #242124;
 
   /* Light backgrounds from primary */
   --color-primary-10: rgba(203, 153, 126, 0.1);
   --color-primary-20: rgba(203, 153, 126, 0.2);
   --color-primary-40: rgba(203, 153, 126, 0.4);
   --color-primary-60: rgba(203, 153, 126, 0.6);
+
+  /* ALert colors */
+  --color-success: #4f7942;
+  --color-warning: #ffbf00;
+  --color-danger: #b31b1b;
 }
 
 html {

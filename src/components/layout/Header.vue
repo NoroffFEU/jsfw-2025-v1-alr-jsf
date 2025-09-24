@@ -1,3 +1,21 @@
+<script setup>
+import { ref } from "vue";
+import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
+import { Bars3Icon } from "@heroicons/vue/24/solid";
+
+const navItems = [
+  { id: 1, name: "HOME", link: "/" },
+  { id: 2, name: "PRODUCTS", link: "/#products" },
+  { id: 3, name: "CART", link: "/cart" },
+  { id: 4, name: "CONTACT", link: "/contact" },
+];
+
+const mobileMenuOpen = ref(false);
+function toggleMobileMenu() {
+  mobileMenuOpen.value = !mobileMenuOpen.value;
+}
+</script>
+
 <template>
   <header class="sticky top-0 z-50 bg-white shadow py-4">
     <div class="max-w-6xl mx-auto px-4 flex flex-col gap-2">
@@ -39,8 +57,6 @@
         </li>
       </ul>
     </div>
-
-    <!-- Mobilmeny -->
     <div v-if="mobileMenuOpen" class="md:hidden bg-primary-20 px-4 py-2">
       <ul class="flex flex-col gap-2">
         <li v-for="item in navItems" :key="item.id">
@@ -56,21 +72,3 @@
     </div>
   </header>
 </template>
-
-<script setup>
-import { ref } from "vue";
-import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
-import { Bars3Icon } from "@heroicons/vue/24/solid";
-
-const navItems = [
-  { id: 1, name: "HOME", link: "/" },
-  { id: 2, name: "PRODUCTS", link: "/#products" },
-  { id: 3, name: "CART", link: "/cart" },
-  { id: 4, name: "CONTACT", link: "/contact" },
-];
-
-const mobileMenuOpen = ref(false);
-function toggleMobileMenu() {
-  mobileMenuOpen.value = !mobileMenuOpen.value;
-}
-</script>
