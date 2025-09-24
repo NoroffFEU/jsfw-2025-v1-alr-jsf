@@ -1,10 +1,12 @@
 <template>
-  <div class="overflow-hidden shadow-sm">
-    <img
-      :src="product.image.url"
-      :alt="product.title"
-      class="w-full h-48 object-cover"
-    />
+  <div class="overflow-hidden">
+    <div class="relative w-full pb-[155%] overflow-hidden">
+      <img
+        :src="product.image.url"
+        :alt="product.title"
+        class="absolute top-0 left-0 w-full h-full object-cover"
+      />
+    </div>
     <h3 class="mt-2 font-medium">{{ product.title }}</h3>
     <div class="mt-1">
       <span

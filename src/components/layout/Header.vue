@@ -3,7 +3,7 @@
     <div class="max-w-6xl mx-auto px-4 flex flex-col gap-2">
       <div class="flex justify-between items-center">
         <a href="/" class="text-2xl font-semibold tracking-wide font-poppins">
-          Polkadot
+          POLKADOT
         </a>
         <form class="relative w-64" role="search" aria-label="Site search">
           <input
@@ -27,7 +27,7 @@
         </button>
       </div>
       <ul
-        class="hidden md:flex md:justify-center gap-6 justify-start font-medium text-lg"
+        class="hidden md:flex md:justify-center gap-6 justify-start font-meduim text-sm"
       >
         <li v-for="item in navItems" :key="item.id">
           <router-link
@@ -63,10 +63,10 @@ import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
 import { Bars3Icon } from "@heroicons/vue/24/solid";
 
 const navItems = [
-  { id: 1, name: "Home", link: "/" },
-  { id: 2, name: "Products", link: "/" },
-  { id: 3, name: "Cart", link: "/cart" },
-  { id: 4, name: "Contact", link: "/contact" },
+  { id: 1, name: "HOME", link: "/" },
+  { id: 2, name: "PRODUCTS", link: "/#products" },
+  { id: 3, name: "CART", link: "/cart" },
+  { id: 4, name: "CONTACT", link: "/contact" },
 ];
 
 const mobileMenuOpen = ref(false);

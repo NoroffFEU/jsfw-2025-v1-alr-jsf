@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import { useToastStore } from "../stores/toastStore";
+import { useToastStore } from "../../stores/toastStore.js";
 import { computed } from "vue";
 
 const toastStore = useToastStore();
@@ -34,6 +34,4 @@ const toastTypeClass = (type) => {
 };
 </script>
 
-<style scoped>
-/* Kan justeres om ønskelig */
-</style>
+<style scoped></style>
