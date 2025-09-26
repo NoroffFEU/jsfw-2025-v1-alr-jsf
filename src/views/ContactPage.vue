@@ -1,3 +1,37 @@
+<script setup>
+import { ref } from "vue";
+import { useToastStore } from "../stores/toastStore";
+
+const name = ref("");
+const subject = ref("");
+const email = ref("");
+const message = ref("");
+const errors = ref({});
+
+const toast = useToastStore();
+
+const validateEmail = (e) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+
+const submitForm = () => {
+  errors.value = {};
+  if (!name.value || name.value.length < 3)
+    errors.value.name = "Name must be at least 3 characters";
+  if (!subject.value || subject.value.length < 3)
+    errors.value.subject = "Subject must be at least 3 characters";
+  if (!email.value || !validateEmail(email.value))
+    errors.value.email = "Invalid email";
+  if (!message.value || message.value.length < 10)
+    errors.value.message = "Message must be at least 10 characters";
+
+  if (Object.keys(errors.value).length === 0) {
+    toast.push("Message sent successfully!", "success");
+    name.value = subject.value = email.value = message.value = "";
+  } else {
+    toast.push("Please fix the errors in the form", "error");
+  }
+};
+</script>
+
 <template>
   <div class="max-w-lg mx-auto px-4 py-6">
     <h1 class="text-2xl font-semibold mb-4">Contact Us</h1>
@@ -44,37 +78,3 @@
     </form>
   </div>
 </template>
-
-<script setup>
-import { ref } from "vue";
-import { useToastStore } from "../stores/toastStore";
-
-const name = ref("");
-const subject = ref("");
-const email = ref("");
-const message = ref("");
-const errors = ref({});
-
-const toast = useToastStore();
-
-const validateEmail = (e) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
-
-const submitForm = () => {
-  errors.value = {};
-  if (!name.value || name.value.length < 3)
-    errors.value.name = "Name must be at least 3 characters";
-  if (!subject.value || subject.value.length < 3)
-    errors.value.subject = "Subject must be at least 3 characters";
-  if (!email.value || !validateEmail(email.value))
-    errors.value.email = "Invalid email";
-  if (!message.value || message.value.length < 10)
-    errors.value.message = "Message must be at least 10 characters";
-
-  if (Object.keys(errors.value).length === 0) {
-    toast.push("Message sent successfully!", "success");
-    name.value = subject.value = email.value = message.value = "";
-  } else {
-    toast.push("Please fix the errors in the form", "error");
-  }
-};
-</script>

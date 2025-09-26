@@ -5,7 +5,6 @@ export function useProducts() {
   const products = ref([]);
   const loading = ref(true);
   const error = ref(null);
-
   onMounted(async () => {
     try {
       products.value = await fetchProducts();
@@ -15,6 +14,5 @@ export function useProducts() {
       loading.value = false;
     }
   });
-
   return { products, loading, error };
 }

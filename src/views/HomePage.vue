@@ -3,6 +3,7 @@ import HeroSection from "../components/home/HeroSection.vue";
 import NewProductsSection from "../components/home/NewProductsSection.vue";
 import ProductListSection from "../components/home/ProductListSection.vue";
 import MidSection from "../components/home/MidSection.vue";
+import ContactSection from "../components/home/ContactSection.vue";
 </script>
 
 <template>
@@ -28,5 +29,6 @@ import MidSection from "../components/home/MidSection.vue";
       },
     ]"
   />
+  <ContactSection />
   <ProductListSection />
 </template>

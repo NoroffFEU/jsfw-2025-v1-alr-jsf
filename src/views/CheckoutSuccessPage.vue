@@ -1,3 +1,5 @@
+<script setup></script>
+
 <template>
   <div class="max-w-4xl mx-auto px-4 py-6 text-center">
     <h1 class="text-2xl font-semibold mb-4">Thank you for your purchase!</h1>
@@ -10,5 +12,3 @@
     </router-link>
   </div>
 </template>
-
-<script setup></script>

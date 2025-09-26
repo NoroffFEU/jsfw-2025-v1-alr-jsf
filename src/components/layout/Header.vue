@@ -6,7 +6,6 @@ import { Bars3Icon } from "@heroicons/vue/24/solid";
 const navItems = [
   { id: 1, name: "HOME", link: "/" },
   { id: 2, name: "PRODUCTS", link: "/#products" },
-  { id: 3, name: "CART", link: "/cart" },
   { id: 4, name: "CONTACT", link: "/contact" },
 ];
 
@@ -23,29 +22,59 @@ function toggleMobileMenu() {
         <a href="/" class="text-2xl font-semibold tracking-wide font-poppins">
           POLKADOT
         </a>
-        <form class="relative w-64" role="search" aria-label="Site search">
-          <input
-            type="text"
-            placeholder="Search Products..."
-            class="w-full px-3 py-2 text-sm border border-gray-200 rounded-full focus:outline-none"
-          />
-          <button
-            type="submit"
-            class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-primary-600"
-            aria-label="Search button"
+        <div class="flex items-center gap-4">
+          <form
+            class="hidden md:flex relative"
+            role="search"
+            aria-label="Site search"
           >
-            <MagnifyingGlassIcon class="w-4 h-4" />
+            <input
+              type="text"
+              placeholder="Search Products..."
+              class="w-64 px-3 py-2 text-sm border border-gray-200 rounded-full focus:outline-none"
+            />
+            <button
+              type="submit"
+              class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-primary-600"
+              aria-label="Search button"
+            >
+              <MagnifyingGlassIcon class="w-4 h-4" />
+            </button>
+          </form>
+          <router-link
+            to="/cart"
+            class="bg-black text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-gray-800 transition"
+          >
+            CART
+          </router-link>
+          <button
+            @click="toggleMobileMenu"
+            class="md:hidden p-2 rounded-md focus:outline-none"
+          >
+            <Bars3Icon class="w-6 h-6" />
           </button>
-        </form>
-        <button
-          @click="toggleMobileMenu"
-          class="md:hidden p-2 rounded-md focus:outline-none"
-        >
-          <Bars3Icon class="w-6 h-6" />
-        </button>
+        </div>
       </div>
+      <form
+        class="flex md:hidden relative mt-2"
+        role="search"
+        aria-label="Site search"
+      >
+        <input
+          type="text"
+          placeholder="Search Products..."
+          class="w-full px-3 py-2 text-sm border border-gray-200 rounded-full focus:outline-none"
+        />
+        <button
+          type="submit"
+          class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-primary-600"
+          aria-label="Search button"
+        >
+          <MagnifyingGlassIcon class="w-4 h-4" />
+        </button>
+      </form>
       <ul
-        class="hidden md:flex md:justify-center gap-6 justify-start font-meduim text-sm"
+        class="hidden md:flex md:justify-center gap-6 justify-start font-medium text-sm mt-2"
       >
         <li v-for="item in navItems" :key="item.id">
           <router-link
@@ -57,7 +86,7 @@ function toggleMobileMenu() {
         </li>
       </ul>
     </div>
-    <div v-if="mobileMenuOpen" class="md:hidden bg-primary-20 px-4 py-2">
+    <div v-if="mobileMenuOpen" class="md:hidden bg-primary-20 px-4 py-2 mt-2">
       <ul class="flex flex-col gap-2">
         <li v-for="item in navItems" :key="item.id">
           <router-link

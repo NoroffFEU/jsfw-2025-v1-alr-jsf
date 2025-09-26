@@ -1,3 +1,7 @@
+<script setup>
+import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
+</script>
+
 <template>
   <div class="w-full bg-white shadow-sm">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
@@ -24,7 +28,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
-</script>

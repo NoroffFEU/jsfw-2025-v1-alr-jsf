@@ -1,3 +1,5 @@
+<script setup></script>
+
 <template>
   <div class="bg-primary-20">
     <p class="text-center p-2">
@@ -5,5 +7,3 @@
     </p>
   </div>
 </template>
-
-<script setup></script>

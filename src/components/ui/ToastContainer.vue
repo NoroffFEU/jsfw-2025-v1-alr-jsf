@@ -1,3 +1,26 @@
+<script setup>
+import { useToastStore } from "../../stores/toastStore.js";
+import { computed } from "vue";
+
+const toastStore = useToastStore();
+const toasts = computed(() => toastStore.toasts);
+
+const toastTypeClass = (type) => {
+  switch (type) {
+    case "success":
+      return "bg-[#4f7942]";
+    case "warning":
+      return "bg-[#cb997e]";
+    case "error":
+      return "bg-[#b31b1b]";
+    case "info":
+      return "bg-[#0a0a0a]";
+    default:
+      return "bg-gray-500";
+  }
+};
+</script>
+
 <template>
   <div class="fixed top-4 right-4 z-50 flex flex-col gap-2">
     <div
@@ -12,26 +35,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { useToastStore } from "../../stores/toastStore.js";
-import { computed } from "vue";
-
-const toastStore = useToastStore();
-const toasts = computed(() => toastStore.toasts);
-
-const toastTypeClass = (type) => {
-  switch (type) {
-    case "success":
-      return "bg-green-500";
-    case "error":
-      return "bg-red-500";
-    case "info":
-      return "bg-blue-500";
-    default:
-      return "bg-gray-500";
-  }
-};
-</script>
-
-<style scoped></style>

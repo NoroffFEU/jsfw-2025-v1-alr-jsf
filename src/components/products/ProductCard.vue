@@ -1,16 +1,13 @@
 <script setup>
 import { computed } from "vue";
+import { useDiscount } from "../../composables/useDiscount.js";
 import { StarIcon as StarSolid } from "@heroicons/vue/24/solid";
 import { StarIcon as StarOutline } from "@heroicons/vue/24/outline";
 
 const props = defineProps({ product: Object });
-
-const discountPercent = computed(() => {
-  if (!props.product) return 0;
-  const { price, discountedPrice } = props.product;
-  if (!price || !discountedPrice || discountedPrice >= price) return 0;
-  return Math.round(((price - discountedPrice) / price) * 100);
-});
+const { discountPercent, discountedPrice } = useDiscount(
+  computed(() => props.product)
+);
 </script>
 
 <template>
@@ -34,12 +31,12 @@ const discountPercent = computed(() => {
       </div>
       <div class="mt-1 text-sm md:text-md flex justify-between">
         <div>
-          <template v-if="product.discountedPrice < product.price">
+          <template v-if="discountPercent > 0">
             <span class="line-through text-base mr-2 font-medium">
               {{ product.price }} NOK
             </span>
             <span class="font-bold text-success">
-              {{ product.discountedPrice }} NOK
+              {{ discountedPrice }} NOK
             </span>
           </template>
           <template v-else>

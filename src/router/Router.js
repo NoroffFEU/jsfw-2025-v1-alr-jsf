@@ -7,7 +7,7 @@ import Contact from "../views/ContactPage.vue";
 
 const routes = [
   { path: "/", component: HomePage },
-  { path: "/product/:id", component: ProductDetail, props: true },
+  { path: "/product/:id", component: ProductDetail, ProductDetail },
   { path: "/cart", component: CartPage },
   { path: "/checkout-success", component: CheckoutSuccess },
   { path: "/contact", component: Contact },

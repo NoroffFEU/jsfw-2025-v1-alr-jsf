@@ -1,3 +1,25 @@
+<script setup>
+import { useCartStore } from "../stores/cartStore";
+import { useToastStore } from "../stores/toastStore";
+
+const cart = useCartStore();
+const toast = useToastStore();
+
+const removeItem = (id) => {
+  cart.removeFromCart(id);
+  toast.push("Item removed from cart", "info");
+};
+
+const updateQty = (item) => {
+  cart.setQty(item.product.id, item.qty);
+};
+
+const checkout = () => {
+  cart.clear();
+  toast.push("Checkout successful!", "success");
+};
+</script>
+
 <template>
   <div class="max-w-4xl mx-auto px-4 py-6">
     <h1 class="text-2xl font-semibold mb-4">Your Cart</h1>
@@ -39,25 +61,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { useCartStore } from "../stores/cartStore";
-import { useToastStore } from "../stores/toastStore";
-
-const cart = useCartStore();
-const toast = useToastStore();
-
-const removeItem = (id) => {
-  cart.removeFromCart(id);
-  toast.push("Item removed from cart", "info");
-};
-
-const updateQty = (item) => {
-  cart.setQty(item.product.id, item.qty);
-};
-
-const checkout = () => {
-  cart.clear();
-  toast.push("Checkout successful!", "success");
-};
-</script>

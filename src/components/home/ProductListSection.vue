@@ -10,10 +10,8 @@ const { products, loading, error } = useProducts();
     <h2 class="font-poppins text-2xl text-center font-medium mb-4">
       All Products
     </h2>
-
     <p v-if="loading">Loading products...</p>
     <p v-else-if="error" class="text-red-500">{{ error }}</p>
-
     <div v-else class="grid gap-2 grid-cols-2 md:grid-cols-4">
       <ProductCard
         v-for="product in products"
