@@ -19,7 +19,7 @@ const { discountPercent, discountedPrice } = useDiscount(
       <div class="relative w-full pb-[155%] overflow-hidden">
         <div
           v-if="discountPercent > 0"
-          class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-md"
+          class="absolute z-10 top-4 left-4 bg-black text-white text-xs font-bold px-2 py-1 rounded-full shadow-md"
         >
           -{{ discountPercent }}%
         </div>

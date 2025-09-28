@@ -4,6 +4,7 @@ import { useRoute } from "vue-router";
 import { fetchProductById } from "../services/api";
 import { useCartStore } from "../stores/cartStore";
 import { useToastStore } from "../stores/toastStore";
+import { useDiscount } from "../composables/useDiscount";
 import { StarIcon as StarSolid } from "@heroicons/vue/24/solid";
 import { StarIcon as StarOutline } from "@heroicons/vue/24/outline";
 import ProductReviews from "../components/products/ProductReviews.vue";
@@ -16,17 +17,7 @@ const error = ref(null);
 const cartStore = useCartStore();
 const toast = useToastStore();
 
-const discountPercent = computed(() => {
-  if (!product.value) return 0;
-  const { price, discountedPrice } = product.value;
-  if (!price || !discountedPrice || discountedPrice >= price) return 0;
-  return Math.round(((price - discountedPrice) / price) * 100);
-});
-
-const discountedPrice = computed(() => {
-  if (!product.value) return 0;
-  return product.value.discountedPrice || product.value.price;
-});
+const { discountPercent, discountedPrice } = useDiscount(product);
 
 const addToCart = (prod) => {
   cartStore.addToCart(prod);
@@ -52,7 +43,7 @@ onMounted(async () => {
       <div class="relative w-full h-80 rounded overflow-hidden">
         <div
           v-if="discountPercent > 0"
-          class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-md"
+          class="absolute z-10 top-4 left-4 bg-black text-white text-xs font-bold px-2 py-1 rounded-full shadow-md"
         >
           -{{ discountPercent }}%
         </div>

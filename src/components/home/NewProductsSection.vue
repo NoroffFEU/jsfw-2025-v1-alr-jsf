@@ -10,7 +10,9 @@ const latestProducts = computed(() => products.value.slice(0, 4));
 
 <template>
   <div class="max-w-6xl mx-auto px-4 py-6">
-    <h2 class="font-poppins text-2xl text-center font-medium mb-4">NEWS</h2>
+    <h2 class="font-poppins text-2xl text-center font-medium mb-4">
+      Have you seen these offers?
+    </h2>
     <p v-if="loading">Loading products...</p>
     <p v-else-if="error" class="text-red-500">{{ error }}</p>
     <div v-else class="grid gap-2 grid-cols-2 md:grid-cols-4">
