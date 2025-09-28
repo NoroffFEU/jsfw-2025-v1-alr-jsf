@@ -1,5 +1,7 @@
 # Polkadot – Online Shop
 
+![Homepage Screenshot](/public/Polkadot.PNG)
+
 An e-commerce web application built with **Vue 3**, **Tailwind CSS**, and **JavaScript**.  
 This project was created as part of the **JavaScript Frameworks course assignment**, where the goal was to build a fully functional online shop that interacts with a REST API, manages state, and provides a seamless shopping experience.
 
