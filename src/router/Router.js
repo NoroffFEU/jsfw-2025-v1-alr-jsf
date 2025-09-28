@@ -3,14 +3,12 @@ import HomePage from "../views/HomePage.vue";
 import ProductDetail from "../views/ProductDetail.vue";
 import CartPage from "../views/CartPage.vue";
 import CheckoutSuccess from "../views/CheckoutSuccessPage.vue";
-import Contact from "../views/ContactPage.vue";
 
 const routes = [
   { path: "/", component: HomePage },
   { path: "/product/:id", component: ProductDetail, ProductDetail },
   { path: "/cart", component: CartPage },
   { path: "/checkout-success", component: CheckoutSuccess },
-  { path: "/contact", component: Contact },
 ];
 
 export const router = createRouter({
