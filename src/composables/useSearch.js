@@ -12,12 +12,19 @@ export function useProductSearch(initialProducts = ref([])) {
       list = list.filter((p) => p.title.toLowerCase().includes(q));
     }
 
+    const getEffectivePrice = (product) =>
+      product.discountedPrice ?? product.price;
+
     switch (sortOption.value) {
       case "price-asc":
-        list = [...list].sort((a, b) => a.price - b.price);
+        list = [...list].sort(
+          (a, b) => getEffectivePrice(a) - getEffectivePrice(b)
+        );
         break;
       case "price-desc":
-        list = [...list].sort((a, b) => b.price - a.price);
+        list = [...list].sort(
+          (a, b) => getEffectivePrice(b) - getEffectivePrice(a)
+        );
         break;
       case "name-desc":
         list = [...list].sort((a, b) => b.title.localeCompare(a.title));
