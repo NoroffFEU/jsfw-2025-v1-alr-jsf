@@ -9,6 +9,7 @@ const modelValue = defineModel();
     <input
       v-model="modelValue"
       type="text"
+      id="searchInput"
       placeholder="Search Products.."
       class="w-full px-3 py-2 text-sm border border-gray-200 rounded-full focus:outline-none focus:ring-1 focus:ring-primary-500"
     />
